@@ -1,0 +1,178 @@
+﻿@page "/"
+
+<h1>Jantar dos Filósofos</h1>
+<br><br>
+<span class="hide" @onclick="FireClick" @ref=MyElementReference></span>
+
+@if(showReports) {
+<div class="row">
+    <div class="col col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Filosófo</th>
+                    <th>QTD Que Comeu</th>
+                    <th>QTD Que Pensou</th>
+                    <th>QTD Com Fome</th>
+                    <th>Status</th>
+                    <th>Milisegundos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="img/aristosteles.jpg" alt="alt text">
+                    </td>
+                    <td>@philosopher_1_eats</td>
+                    <td>@philosopher_1_think</td>
+                    <td>@philosopher_1_hunger</td>
+                    <td data-content="@philosopher_1_status">@philosopher_1_status</td>
+                    <td>@philosopher_1_time</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/gabriel.png" alt="alt text">
+                    </td>
+                    <td>@philosopher_2_eats</td>
+                    <td>@philosopher_2_think</td>
+                    <td>@philosopher_2_hunger</td>
+                    <td data-content="@philosopher_2_status">@philosopher_2_status</td>
+                    <td>@philosopher_2_time</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/niet.jpg" alt="alt text">
+                    </td>
+                    <td>@philosopher_3_eats</td>
+                    <td>@philosopher_3_think</td>
+                    <td>@philosopher_3_hunger</td>
+                    <td data-content="@philosopher_3_status">@philosopher_3_status</td>
+                    <td>@philosopher_3_time</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/platao.jpg" alt="alt text">
+                    </td>
+                    <td>@philosopher_4_eats</td>
+                    <td>@philosopher_4_think</td>
+                    <td>@philosopher_4_hunger</td>
+                    <td data-content="@philosopher_4_status">@philosopher_4_status</td>
+                    <td>@philosopher_4_time</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="img/socrates.jpg" alt="alt text">
+                    </td>
+                    <td>@philosopher_5_eats</td>
+                    <td>@philosopher_5_think</td>
+                    <td>@philosopher_5_hunger</td>
+                    <td data-content="@philosopher_5_status">@philosopher_5_status</td>
+                    <td>@philosopher_5_time</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+} 
+else 
+{
+    <button class="btn btn-primary" @onclick="StartDinner">Começar o Jantar</button>
+}
+
+@using System.Threading
+@using System.Timers
+@inject IJSRuntime JSRuntime
+
+@code {
+    PhilosophersDinner dinner;
+    PhilosopherReports reports;
+    ElementReference MyElementReference;
+    bool showReports = false;
+    int philosopher_1_eats;
+    int philosopher_2_eats;
+    int philosopher_3_eats;
+    int philosopher_4_eats;
+    int philosopher_5_eats;
+    int philosopher_1_think;
+    int philosopher_2_think;
+    int philosopher_3_think;
+    int philosopher_4_think;
+    int philosopher_5_think;
+    int philosopher_1_hunger;
+    int philosopher_2_hunger;
+    int philosopher_3_hunger;
+    int philosopher_4_hunger;
+    int philosopher_5_hunger;
+    string philosopher_1_status;
+    string philosopher_2_status;
+    string philosopher_3_status;
+    string philosopher_4_status;
+    string philosopher_5_status;
+    string philosopher_1_time;
+    string philosopher_2_time;
+    string philosopher_3_time;
+    string philosopher_4_time;
+    string philosopher_5_time;
+
+    void StartDinner()
+    {
+        showReports = true;
+        reports = new PhilosopherReports(StateChange);
+        dinner = new PhilosophersDinner(reports);
+        Thread.Sleep(100);
+        SetTimer();
+        StateHasChanged();
+    }
+
+    void StateChange()
+    {
+        reports.getReports().TryGetValue("Philosopher 0 Eats", out philosopher_1_eats);
+        reports.getReports().TryGetValue("Philosopher 1 Eats", out philosopher_2_eats);
+        reports.getReports().TryGetValue("Philosopher 2 Eats", out philosopher_3_eats);
+        reports.getReports().TryGetValue("Philosopher 3 Eats", out philosopher_4_eats);
+        reports.getReports().TryGetValue("Philosopher 4 Eats", out philosopher_5_eats);
+
+        reports.getReports().TryGetValue("Philosopher 0 Think", out philosopher_1_think);
+        reports.getReports().TryGetValue("Philosopher 1 Think", out philosopher_2_think);
+        reports.getReports().TryGetValue("Philosopher 2 Think", out philosopher_3_think);
+        reports.getReports().TryGetValue("Philosopher 3 Think", out philosopher_4_think);
+        reports.getReports().TryGetValue("Philosopher 4 Think", out philosopher_5_think);
+
+        reports.getReports().TryGetValue("Philosopher 0 Hunger", out philosopher_1_hunger);
+        reports.getReports().TryGetValue("Philosopher 1 Hunger", out philosopher_2_hunger);
+        reports.getReports().TryGetValue("Philosopher 2 Hunger", out philosopher_3_hunger);
+        reports.getReports().TryGetValue("Philosopher 3 Hunger", out philosopher_4_hunger);
+        reports.getReports().TryGetValue("Philosopher 4 Hunger", out philosopher_5_hunger);
+
+        reports.getStatuses().TryGetValue("Philosopher 0 Status", out philosopher_1_status);
+        reports.getStatuses().TryGetValue("Philosopher 1 Status", out philosopher_2_status);
+        reports.getStatuses().TryGetValue("Philosopher 2 Status", out philosopher_3_status);
+        reports.getStatuses().TryGetValue("Philosopher 3 Status", out philosopher_4_status);
+        reports.getStatuses().TryGetValue("Philosopher 4 Status", out philosopher_5_status);
+
+        reports.getStatuses().TryGetValue("Philosopher 0 Time", out philosopher_1_time);
+        reports.getStatuses().TryGetValue("Philosopher 1 Time", out philosopher_2_time);
+        reports.getStatuses().TryGetValue("Philosopher 2 Time", out philosopher_3_time);
+        reports.getStatuses().TryGetValue("Philosopher 3 Time", out philosopher_4_time);
+        reports.getStatuses().TryGetValue("Philosopher 4 Time", out philosopher_5_time);
+
+    }
+
+    void SetTimer()
+    {
+        System.Timers.Timer aTimer = new System.Timers.Timer(100);
+        aTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
+        aTimer.AutoReset = true;
+        aTimer.Enabled = true;
+    }
+
+    void OnTimedEvent(Object source, ElapsedEventArgs e)
+    {
+        JSRuntime.InvokeVoidAsync("TriggerClick", MyElementReference);
+    }
+
+    void FireClick()
+    {
+        StateHasChanged();
+    }
+}
