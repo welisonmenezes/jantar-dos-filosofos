@@ -50,6 +50,7 @@ namespace Filosofos.Classes
             relatorio.adicionaRelatorio(this.name + " Fome", 0);
             relatorio.adicionaRelatorio(this.name + " Pensou", 0);
             relatorio.adicionaRelatorio(this.name + " Tempo", 0);
+            relatorio.adicionaStatus(this.name + " Status", "");
         }
 
         public void ComecaAJanta()
@@ -83,6 +84,7 @@ namespace Filosofos.Classes
                     Thread.Sleep(100);
                     Console.WriteLine("O " + this.name + " está pasando fome.");
                     this.relatorio.incrementaRelatorio(this.name + " Fome");
+                    this.relatorio.atualizaStatus(this.name + " Status", "Com Fome");
                     this.LargarGarfoDaEsquerda();
                 }
             }
@@ -95,6 +97,7 @@ namespace Filosofos.Classes
             this.vezesQueComeu++;
             Console.WriteLine("O " + this.name + " está comendo.");
             this.relatorio.incrementaRelatorio(this.name + " Comeu");
+            this.relatorio.atualizaStatus(this.name + " Status", "Comendo");
             if (this.vezesQueComeu == this.maximoDeVezesPraComer)
             {
                 Console.WriteLine("O " + this.name + " passou " + cronometro.ElapsedMilliseconds + " milesegundos jantando.");
@@ -117,6 +120,7 @@ namespace Filosofos.Classes
             Thread.Sleep(100);
             Console.WriteLine("O " + this.name + " está pensando.");
             this.relatorio.incrementaRelatorio(this.name + " Pensou");
+            this.relatorio.atualizaStatus(this.name + " Status", "Pensando");
         }
     }
 

@@ -50,6 +50,16 @@ namespace Filosofos
         private Label filosofo_5_pensou;
         private Label label28;
         private Label filosofo_5_comeu;
+        private Label label22;
+        private Label filosofo_1_status;
+        private Label filosofo_2_status;
+        private Label label27;
+        private Label filosofo_3_status;
+        private Label label30;
+        private Label filosofo_4_status;
+        private Label label32;
+        private Label filosofo_5_status;
+        private Label label34;
         public Relatorio relatorio;
 
         public Form1()
@@ -66,26 +76,31 @@ namespace Filosofos
             this.filosofo_1_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Fome") + "";
             this.filosofo_1_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Pensou") + "";
             this.filosofo_1_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Tempo") + "";
+            this.filosofo_1_status.Text = relatorio.pegaValorDoStatus("Filosofo 1 Status");
 
             this.filosofo_2_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Comeu") + "";
             this.filosofo_2_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Fome") + "";
             this.filosofo_2_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Pensou") + "";
             this.filosofo_2_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Tempo") + "";
+            this.filosofo_2_status.Text = relatorio.pegaValorDoStatus("Filosofo 2 Status");
 
             this.filosofo_3_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Comeu") + "";
             this.filosofo_3_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Fome") + "";
             this.filosofo_3_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Pensou") + "";
             this.filosofo_3_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Tempo") + "";
+            this.filosofo_3_status.Text = relatorio.pegaValorDoStatus("Filosofo 3 Status");
 
             this.filosofo_4_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Comeu") + "";
             this.filosofo_4_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Fome") + "";
             this.filosofo_4_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Pensou") + "";
             this.filosofo_4_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Tempo") + "";
+            this.filosofo_4_status.Text = relatorio.pegaValorDoStatus("Filosofo 4 Status");
 
             this.filosofo_5_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Comeu") + "";
             this.filosofo_5_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Fome") + "";
             this.filosofo_5_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Pensou") + "";
             this.filosofo_5_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Tempo") + "";
+            this.filosofo_5_status.Text = relatorio.pegaValorDoStatus("Filosofo 5 Status");
         }
 
         private void InitializeComponent()
@@ -135,6 +150,16 @@ namespace Filosofos
             this.filosofo_5_pensou = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.filosofo_5_comeu = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.filosofo_1_status = new System.Windows.Forms.Label();
+            this.filosofo_2_status = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.filosofo_3_status = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.filosofo_4_status = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.filosofo_5_status = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // filosofo_1_comeu
@@ -547,9 +572,109 @@ namespace Filosofos
             this.filosofo_5_comeu.TabIndex = 36;
             this.filosofo_5_comeu.Text = "0";
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(36, 158);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(37, 13);
+            this.label22.TabIndex = 45;
+            this.label22.Text = "Status";
+            // 
+            // filosofo_1_status
+            // 
+            this.filosofo_1_status.AutoSize = true;
+            this.filosofo_1_status.Location = new System.Drawing.Point(137, 158);
+            this.filosofo_1_status.Name = "filosofo_1_status";
+            this.filosofo_1_status.Size = new System.Drawing.Size(13, 13);
+            this.filosofo_1_status.TabIndex = 46;
+            this.filosofo_1_status.Text = "0";
+            // 
+            // filosofo_2_status
+            // 
+            this.filosofo_2_status.AutoSize = true;
+            this.filosofo_2_status.Location = new System.Drawing.Point(360, 158);
+            this.filosofo_2_status.Name = "filosofo_2_status";
+            this.filosofo_2_status.Size = new System.Drawing.Size(13, 13);
+            this.filosofo_2_status.TabIndex = 48;
+            this.filosofo_2_status.Text = "0";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(259, 158);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(37, 13);
+            this.label27.TabIndex = 47;
+            this.label27.Text = "Status";
+            // 
+            // filosofo_3_status
+            // 
+            this.filosofo_3_status.AutoSize = true;
+            this.filosofo_3_status.Location = new System.Drawing.Point(596, 158);
+            this.filosofo_3_status.Name = "filosofo_3_status";
+            this.filosofo_3_status.Size = new System.Drawing.Size(13, 13);
+            this.filosofo_3_status.TabIndex = 50;
+            this.filosofo_3_status.Text = "0";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(495, 158);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(37, 13);
+            this.label30.TabIndex = 49;
+            this.label30.Text = "Status";
+            // 
+            // filosofo_4_status
+            // 
+            this.filosofo_4_status.AutoSize = true;
+            this.filosofo_4_status.Location = new System.Drawing.Point(136, 372);
+            this.filosofo_4_status.Name = "filosofo_4_status";
+            this.filosofo_4_status.Size = new System.Drawing.Size(13, 13);
+            this.filosofo_4_status.TabIndex = 52;
+            this.filosofo_4_status.Text = "0";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(35, 372);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(37, 13);
+            this.label32.TabIndex = 51;
+            this.label32.Text = "Status";
+            // 
+            // filosofo_5_status
+            // 
+            this.filosofo_5_status.AutoSize = true;
+            this.filosofo_5_status.Location = new System.Drawing.Point(360, 372);
+            this.filosofo_5_status.Name = "filosofo_5_status";
+            this.filosofo_5_status.Size = new System.Drawing.Size(13, 13);
+            this.filosofo_5_status.TabIndex = 54;
+            this.filosofo_5_status.Text = "0";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(259, 372);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(37, 13);
+            this.label34.TabIndex = 53;
+            this.label34.Text = "Status";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(1024, 552);
+            this.Controls.Add(this.filosofo_5_status);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.filosofo_4_status);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.filosofo_3_status);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.filosofo_2_status);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.filosofo_1_status);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.filosofo_5_tempo);

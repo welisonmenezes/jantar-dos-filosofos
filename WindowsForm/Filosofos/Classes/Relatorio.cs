@@ -6,6 +6,7 @@ namespace Filosofos.Classes
     public class Relatorio
     {
         public Dictionary<string, long> relatorios = new Dictionary<string, long>();
+        public Dictionary<string, string> status = new Dictionary<string, string>();
         Action method;
 
         public Relatorio(Action method)
@@ -18,6 +19,11 @@ namespace Filosofos.Classes
             this.relatorios.Add(key, value);
         }
 
+        public void adicionaStatus(string key, string value)
+        {
+            this.status.Add(key, value);
+        }
+
         public long pegaValorDoRelatorio(string key)
         {
             long value;
@@ -26,6 +32,16 @@ namespace Filosofos.Classes
                 return value;
             }
             return 0;
+        }
+
+        public string pegaValorDoStatus(string key)
+        {
+            string value;
+            if (this.status.TryGetValue(key, out value))
+            {
+                return value;
+            }
+            return "";
         }
 
         public void incrementaRelatorio(string Name)
@@ -40,6 +56,12 @@ namespace Filosofos.Classes
         public void atualizaRelatorio(string Name, long valor)
         {
             this.relatorios[Name] = valor;
+            this.method();
+        }
+
+        public void atualizaStatus(string Name, string valor)
+        {
+            this.status[Name] = valor;
             this.method();
         }
 
