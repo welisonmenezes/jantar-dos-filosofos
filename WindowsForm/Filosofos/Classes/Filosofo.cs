@@ -11,7 +11,7 @@ namespace Filosofos.Classes
         private int index { get; set; }
         private List<Filosofo> todosFilosofos { get; set; }
         private int vezesQueComeu = 0;
-        private int maximoDeVezesPraComer = 100;
+        private int maximoDeVezesPraComer = 1000000;
         private int delay = 500;
         public Mao garfoAEsquerda { get; set; }
         public Mao garfoADireita { get; set; }
@@ -70,6 +70,7 @@ namespace Filosofos.Classes
                     this.garfoAEsquerda.isBusy = false;
                     this.garfoADireita.isBusy = false;
                 }
+                this.relatorio.atualizaRelatorio(this.name + " Tempo", cronometro.ElapsedMilliseconds);
             }
             cronometro.Stop();
 
@@ -105,20 +106,20 @@ namespace Filosofos.Classes
         private void Comer()
         {
             this.vezesQueComeu++;
-            Console.WriteLine("O " + this.name + " está comendo.");
+            //Console.WriteLine("O " + this.name + " está comendo.");
             this.relatorio.incrementaRelatorio(this.name + " Comeu");
             this.relatorio.atualizaStatus(this.name + " Status", "Comendo");
             if (this.vezesQueComeu == this.maximoDeVezesPraComer)
             {
-                Console.WriteLine("O " + this.name + " passou " + cronometro.ElapsedMilliseconds + " milesegundos jantando.");
+                //Console.WriteLine("O " + this.name + " passou " + cronometro.ElapsedMilliseconds + " milesegundos jantando.");
+                this.relatorio.atualizaStatus(this.name + " Status", "Terminou");
             }
-            this.relatorio.atualizaRelatorio(this.name + " Tempo", cronometro.ElapsedMilliseconds);
            
         }
 
         private void Pensar()
         {
-            Console.WriteLine("O " + this.name + " está pensando.");
+            //Console.WriteLine("O " + this.name + " está pensando.");
             this.relatorio.incrementaRelatorio(this.name + " Pensou");
             this.relatorio.atualizaStatus(this.name + " Status", "Pensando");
         }

@@ -84,77 +84,77 @@ else
 @inject IJSRuntime JSRuntime
 
 @code {
-    PhilosophersDinner dinner;
-    PhilosopherReports reports;
+    Jantar jantar;
+    Relatorio relatorio;
     ElementReference MyElementReference;
     bool showReports = false;
-    int philosopher_1_eats;
-    int philosopher_2_eats;
-    int philosopher_3_eats;
-    int philosopher_4_eats;
-    int philosopher_5_eats;
-    int philosopher_1_think;
-    int philosopher_2_think;
-    int philosopher_3_think;
-    int philosopher_4_think;
-    int philosopher_5_think;
-    int philosopher_1_hunger;
-    int philosopher_2_hunger;
-    int philosopher_3_hunger;
-    int philosopher_4_hunger;
-    int philosopher_5_hunger;
+    long philosopher_1_eats;
+    long philosopher_2_eats;
+    long philosopher_3_eats;
+    long philosopher_4_eats;
+    long philosopher_5_eats;
+    long philosopher_1_think;
+    long philosopher_2_think;
+    long philosopher_3_think;
+    long philosopher_4_think;
+    long philosopher_5_think;
+    long philosopher_1_hunger;
+    long philosopher_2_hunger;
+    long philosopher_3_hunger;
+    long philosopher_4_hunger;
+    long philosopher_5_hunger;
     string philosopher_1_status;
     string philosopher_2_status;
     string philosopher_3_status;
     string philosopher_4_status;
     string philosopher_5_status;
-    string philosopher_1_time;
-    string philosopher_2_time;
-    string philosopher_3_time;
-    string philosopher_4_time;
-    string philosopher_5_time;
+    long philosopher_1_time;
+    long philosopher_2_time;
+    long philosopher_3_time;
+    long philosopher_4_time;
+    long philosopher_5_time;
 
     void StartDinner()
     {
         showReports = true;
-        reports = new PhilosopherReports(StateChange);
-        dinner = new PhilosophersDinner(reports);
+        relatorio = new Relatorio(AtualizaTela);
+        jantar = new Jantar(relatorio);
         Thread.Sleep(100);
         SetTimer();
         StateHasChanged();
     }
 
-    void StateChange()
+    void AtualizaTela()
     {
-        reports.getReports().TryGetValue("Philosopher 0 Eats", out philosopher_1_eats);
-        reports.getReports().TryGetValue("Philosopher 1 Eats", out philosopher_2_eats);
-        reports.getReports().TryGetValue("Philosopher 2 Eats", out philosopher_3_eats);
-        reports.getReports().TryGetValue("Philosopher 3 Eats", out philosopher_4_eats);
-        reports.getReports().TryGetValue("Philosopher 4 Eats", out philosopher_5_eats);
+        relatorio.relatorios.TryGetValue("Filosofo 1 Comeu", out philosopher_2_eats);
+        relatorio.relatorios.TryGetValue("Filosofo 2 Comeu", out philosopher_3_eats);
+        relatorio.relatorios.TryGetValue("Filosofo 3 Comeu", out philosopher_4_eats);
+        relatorio.relatorios.TryGetValue("Filosofo 4 Comeu", out philosopher_5_eats);
+        relatorio.relatorios.TryGetValue("Filosofo 5 Comeu", out philosopher_1_eats);
 
-        reports.getReports().TryGetValue("Philosopher 0 Think", out philosopher_1_think);
-        reports.getReports().TryGetValue("Philosopher 1 Think", out philosopher_2_think);
-        reports.getReports().TryGetValue("Philosopher 2 Think", out philosopher_3_think);
-        reports.getReports().TryGetValue("Philosopher 3 Think", out philosopher_4_think);
-        reports.getReports().TryGetValue("Philosopher 4 Think", out philosopher_5_think);
+        relatorio.relatorios.TryGetValue("Filosofo 1 Pensou", out philosopher_2_think);
+        relatorio.relatorios.TryGetValue("Filosofo 2 Pensou", out philosopher_3_think);
+        relatorio.relatorios.TryGetValue("Filosofo 3 Pensou", out philosopher_4_think);
+        relatorio.relatorios.TryGetValue("Filosofo 4 Pensou", out philosopher_5_think);
+        relatorio.relatorios.TryGetValue("Filosofo 5 Pensou", out philosopher_1_think);
 
-        reports.getReports().TryGetValue("Philosopher 0 Hunger", out philosopher_1_hunger);
-        reports.getReports().TryGetValue("Philosopher 1 Hunger", out philosopher_2_hunger);
-        reports.getReports().TryGetValue("Philosopher 2 Hunger", out philosopher_3_hunger);
-        reports.getReports().TryGetValue("Philosopher 3 Hunger", out philosopher_4_hunger);
-        reports.getReports().TryGetValue("Philosopher 4 Hunger", out philosopher_5_hunger);
+        relatorio.relatorios.TryGetValue("Filosofo 1 Fome", out philosopher_2_hunger);
+        relatorio.relatorios.TryGetValue("Filosofo 2 Fome", out philosopher_3_hunger);
+        relatorio.relatorios.TryGetValue("Filosofo 3 Fome", out philosopher_4_hunger);
+        relatorio.relatorios.TryGetValue("Filosofo 4 Fome", out philosopher_5_hunger);
+        relatorio.relatorios.TryGetValue("Filosofo 5 Fome", out philosopher_1_hunger);
 
-        reports.getStatuses().TryGetValue("Philosopher 0 Status", out philosopher_1_status);
-        reports.getStatuses().TryGetValue("Philosopher 1 Status", out philosopher_2_status);
-        reports.getStatuses().TryGetValue("Philosopher 2 Status", out philosopher_3_status);
-        reports.getStatuses().TryGetValue("Philosopher 3 Status", out philosopher_4_status);
-        reports.getStatuses().TryGetValue("Philosopher 4 Status", out philosopher_5_status);
+        relatorio.status.TryGetValue("Filosofo 1 Status", out philosopher_2_status);
+        relatorio.status.TryGetValue("Filosofo 2 Status", out philosopher_3_status);
+        relatorio.status.TryGetValue("Filosofo 3 Status", out philosopher_4_status);
+        relatorio.status.TryGetValue("Filosofo 4 Status", out philosopher_5_status);
+        relatorio.status.TryGetValue("Filosofo 5 Status", out philosopher_1_status);
 
-        reports.getStatuses().TryGetValue("Philosopher 0 Time", out philosopher_1_time);
-        reports.getStatuses().TryGetValue("Philosopher 1 Time", out philosopher_2_time);
-        reports.getStatuses().TryGetValue("Philosopher 2 Time", out philosopher_3_time);
-        reports.getStatuses().TryGetValue("Philosopher 3 Time", out philosopher_4_time);
-        reports.getStatuses().TryGetValue("Philosopher 4 Time", out philosopher_5_time);
+        relatorio.relatorios.TryGetValue("Filosofo 1 Tempo", out philosopher_2_time);
+        relatorio.relatorios.TryGetValue("Filosofo 2 Tempo", out philosopher_3_time);
+        relatorio.relatorios.TryGetValue("Filosofo 3 Tempo", out philosopher_4_time);
+        relatorio.relatorios.TryGetValue("Filosofo 4 Tempo", out philosopher_5_time);
+        relatorio.relatorios.TryGetValue("Filosofo 5 Tempo", out philosopher_1_time);
 
     }
 
