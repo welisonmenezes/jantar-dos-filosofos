@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Filosofo.cs" />
-    <Compile Include="Classes\Garfo.cs" />
+    <Compile Include="Classes\Mao.cs" />
     <Compile Include="Classes\Jantar.cs" />
     <Compile Include="Classes\Relatorio.cs" />
     <Compile Include="Form1.cs">

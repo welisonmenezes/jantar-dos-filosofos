@@ -37,8 +37,8 @@ namespace Filosofos.Classes
 
             foreach (Filosofo filosofo in filosofos)
             {
-                filosofo.garfoAEsquerda = filosofo.filosofoAEsquerda.garfoADireita ?? new Garfo();
-                filosofo.garfoADireita = filosofo.filosofoADireita.garfoAEsquerda ?? new Garfo();
+                filosofo.garfoAEsquerda = new Mao(false);
+                filosofo.garfoADireita = new Mao(false);
             }
 
             return filosofos;

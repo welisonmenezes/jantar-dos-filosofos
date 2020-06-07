@@ -11,9 +11,10 @@ namespace Filosofos.Classes
         private int index { get; set; }
         private List<Filosofo> todosFilosofos { get; set; }
         private int vezesQueComeu = 0;
-        private int maximoDeVezesPraComer = 10000000;
-        public Garfo garfoAEsquerda { get; set; }
-        public Garfo garfoADireita { get; set; }
+        private int maximoDeVezesPraComer = 100;
+        private int delay = 500;
+        public Mao garfoAEsquerda { get; set; }
+        public Mao garfoADireita { get; set; }
         Stopwatch cronometro;
         public Relatorio relatorio;
 
@@ -59,12 +60,15 @@ namespace Filosofos.Classes
             cronometro = Stopwatch.StartNew();
             while (this.vezesQueComeu < this.maximoDeVezesPraComer)
             {
+                Thread.Sleep(delay);
                 this.Pensar();
+                Thread.Sleep(delay);
                 if (this.PegarGarfos())
                 {
+                    Thread.Sleep(delay);
                     this.Comer();
-                    this.LargarGarfoDaEsquerda();
-                    this.LargarGarfoDaDireita();
+                    this.garfoAEsquerda.isBusy = false;
+                    this.garfoADireita.isBusy = false;
                 }
             }
             cronometro.Stop();
@@ -73,27 +77,33 @@ namespace Filosofos.Classes
 
         private bool PegarGarfos()
         {
-            if (Monitor.TryEnter(this.garfoAEsquerda))
+            garfoADireita.isBusy = true;
+            garfoAEsquerda.isBusy = true;
+
+            if (filosofoADireita.garfoAEsquerda.isBusy)
             {
-                if (Monitor.TryEnter(this.garfoADireita))
-                {
-                    return true;
-                }
-                else
-                {
-                    Thread.Sleep(100);
-                    Console.WriteLine("O " + this.name + " está pasando fome.");
-                    this.relatorio.incrementaRelatorio(this.name + " Fome");
-                    this.relatorio.atualizaStatus(this.name + " Status", "Com Fome");
-                    this.LargarGarfoDaEsquerda();
-                }
+                garfoADireita.isBusy = false;
             }
+
+            if (filosofoAEsquerda.garfoADireita.isBusy)
+            {
+                garfoAEsquerda.isBusy = false;
+            }
+
+            if (garfoADireita.isBusy && garfoAEsquerda.isBusy)
+            {
+                return true;
+            }
+
+            Console.WriteLine("O " + this.name + " está pasando fome.");
+            this.relatorio.incrementaRelatorio(this.name + " Fome");
+            this.relatorio.atualizaStatus(this.name + " Status", "Com Fome");
+
             return false;
         }
 
         private void Comer()
         {
-            Thread.Sleep(100);
             this.vezesQueComeu++;
             Console.WriteLine("O " + this.name + " está comendo.");
             this.relatorio.incrementaRelatorio(this.name + " Comeu");
@@ -103,21 +113,11 @@ namespace Filosofos.Classes
                 Console.WriteLine("O " + this.name + " passou " + cronometro.ElapsedMilliseconds + " milesegundos jantando.");
             }
             this.relatorio.atualizaRelatorio(this.name + " Tempo", cronometro.ElapsedMilliseconds);
-        }
-
-        private void LargarGarfoDaEsquerda()
-        {
-            Monitor.Exit(this.garfoAEsquerda);
-        }
-
-        private void LargarGarfoDaDireita()
-        {
-            Monitor.Exit(this.garfoADireita);
+           
         }
 
         private void Pensar()
         {
-            Thread.Sleep(100);
             Console.WriteLine("O " + this.name + " está pensando.");
             this.relatorio.incrementaRelatorio(this.name + " Pensou");
             this.relatorio.atualizaStatus(this.name + " Status", "Pensando");
