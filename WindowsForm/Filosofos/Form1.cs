@@ -1,4 +1,5 @@
 ﻿using Filosofos.Classes;
+using System;
 using System.Windows.Forms;
 
 namespace Filosofos
@@ -64,7 +65,7 @@ namespace Filosofos
 
         public Form1()
         {
-            CheckForIllegalCrossThreadCalls = false;
+            //CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             this.relatorio = new Relatorio(this.CallbackRelatorio);
             new Jantar(this.relatorio);
@@ -72,35 +73,35 @@ namespace Filosofos
 
         public void CallbackRelatorio()
         {
-            this.filosofo_1_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Comeu")+"";
-            this.filosofo_1_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Fome") + "";
-            this.filosofo_1_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Pensou") + "";
-            this.filosofo_1_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Tempo") + "";
-            this.filosofo_1_status.Text = relatorio.pegaValorDoStatus("Filosofo 1 Status");
+            filosofo_1_comeu.Invoke((MethodInvoker)(() => filosofo_1_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Comeu") + ""));
+            filosofo_1_fome.Invoke((MethodInvoker)(() => filosofo_1_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Fome") + ""));
+            filosofo_1_pensou.Invoke((MethodInvoker)(() => filosofo_1_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Pensou") + ""));
+            filosofo_1_tempo.Invoke((MethodInvoker)(() => filosofo_1_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 1 Tempo") + ""));
+            filosofo_1_status.Invoke((MethodInvoker)(() => filosofo_1_status.Text = relatorio.pegaValorDoStatus("Filosofo 1 Status") + ""));
 
-            this.filosofo_2_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Comeu") + "";
-            this.filosofo_2_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Fome") + "";
-            this.filosofo_2_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Pensou") + "";
-            this.filosofo_2_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Tempo") + "";
-            this.filosofo_2_status.Text = relatorio.pegaValorDoStatus("Filosofo 2 Status");
+            filosofo_2_comeu.Invoke((MethodInvoker)(() => filosofo_2_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Comeu") + ""));
+            filosofo_2_fome.Invoke((MethodInvoker)(() => filosofo_2_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Fome") + ""));
+            filosofo_2_pensou.Invoke((MethodInvoker)(() => filosofo_2_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Pensou") + ""));
+            filosofo_2_tempo.Invoke((MethodInvoker)(() => filosofo_2_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 2 Tempo") + ""));
+            filosofo_2_status.Invoke((MethodInvoker)(() => filosofo_2_status.Text = relatorio.pegaValorDoStatus("Filosofo 2 Status") + ""));
 
-            this.filosofo_3_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Comeu") + "";
-            this.filosofo_3_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Fome") + "";
-            this.filosofo_3_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Pensou") + "";
-            this.filosofo_3_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Tempo") + "";
-            this.filosofo_3_status.Text = relatorio.pegaValorDoStatus("Filosofo 3 Status");
+            filosofo_3_comeu.Invoke((MethodInvoker)(() => filosofo_3_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Comeu") + ""));
+            filosofo_3_fome.Invoke((MethodInvoker)(() => filosofo_3_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Fome") + ""));
+            filosofo_3_pensou.Invoke((MethodInvoker)(() => filosofo_3_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Pensou") + ""));
+            filosofo_3_tempo.Invoke((MethodInvoker)(() => filosofo_3_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 3 Tempo") + ""));
+            filosofo_3_status.Invoke((MethodInvoker)(() => filosofo_3_status.Text = relatorio.pegaValorDoStatus("Filosofo 3 Status") + ""));
 
-            this.filosofo_4_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Comeu") + "";
-            this.filosofo_4_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Fome") + "";
-            this.filosofo_4_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Pensou") + "";
-            this.filosofo_4_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Tempo") + "";
-            this.filosofo_4_status.Text = relatorio.pegaValorDoStatus("Filosofo 4 Status");
+            filosofo_4_comeu.Invoke((MethodInvoker)(() => filosofo_4_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Comeu") + ""));
+            filosofo_4_fome.Invoke((MethodInvoker)(() => filosofo_4_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Fome") + ""));
+            filosofo_4_pensou.Invoke((MethodInvoker)(() => filosofo_4_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Pensou") + ""));
+            filosofo_4_tempo.Invoke((MethodInvoker)(() => filosofo_4_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 4 Tempo") + ""));
+            filosofo_4_status.Invoke((MethodInvoker)(() => filosofo_4_status.Text = relatorio.pegaValorDoStatus("Filosofo 4 Status") + ""));
 
-            this.filosofo_5_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Comeu") + "";
-            this.filosofo_5_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Fome") + "";
-            this.filosofo_5_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Pensou") + "";
-            this.filosofo_5_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Tempo") + "";
-            this.filosofo_5_status.Text = relatorio.pegaValorDoStatus("Filosofo 5 Status");
+            filosofo_5_comeu.Invoke((MethodInvoker)(() => filosofo_5_comeu.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Comeu") + ""));
+            filosofo_5_fome.Invoke((MethodInvoker)(() => filosofo_5_fome.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Fome") + ""));
+            filosofo_5_pensou.Invoke((MethodInvoker)(() => filosofo_5_pensou.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Pensou") + ""));
+            filosofo_5_tempo.Invoke((MethodInvoker)(() => filosofo_5_tempo.Text = relatorio.pegaValorDoRelatorio("Filosofo 5 Tempo") + ""));
+            filosofo_5_status.Invoke((MethodInvoker)(() => filosofo_5_status.Text = relatorio.pegaValorDoStatus("Filosofo 5 Status") + ""));
         }
 
         private void InitializeComponent()
