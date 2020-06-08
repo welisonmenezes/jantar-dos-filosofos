@@ -12,7 +12,7 @@ namespace Filosofos.Classes
         private List<Filosofo> todosFilosofos { get; set; }
         private int vezesQueComeu = 0;
         private int maximoDeVezesPraComer = 1000000;
-        private int delay = 500;
+        private int delay = 50;
         public Mao garfoAEsquerda { get; set; }
         public Mao garfoADireita { get; set; }
         Stopwatch cronometro;
@@ -78,25 +78,22 @@ namespace Filosofos.Classes
 
         private bool PegarGarfos()
         {
-            garfoADireita.isBusy = true;
-            garfoAEsquerda.isBusy = true;
-
-            if (filosofoADireita.garfoAEsquerda.isBusy)
+            if (!filosofoADireita.garfoAEsquerda.isBusy)
             {
-                garfoADireita.isBusy = false;
+                garfoADireita.isBusy = true;
+
+                if (!filosofoAEsquerda.garfoADireita.isBusy)
+                {
+                    garfoAEsquerda.isBusy = true;
+                    return true;
+                }
+                else
+                {
+                    garfoADireita.isBusy = false;
+                }
             }
 
-            if (filosofoAEsquerda.garfoADireita.isBusy)
-            {
-                garfoAEsquerda.isBusy = false;
-            }
-
-            if (garfoADireita.isBusy && garfoAEsquerda.isBusy)
-            {
-                return true;
-            }
-
-            Console.WriteLine("O " + this.name + " está pasando fome.");
+            //Console.WriteLine("O " + this.name + " está pasando fome.");
             this.relatorio.incrementaRelatorio(this.name + " Fome");
             this.relatorio.atualizaStatus(this.name + " Status", "Com Fome");
 

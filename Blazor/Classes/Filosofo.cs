@@ -11,7 +11,7 @@ class Filosofo
     private List<Filosofo> todosFilosofos { get; set; }
     private int vezesQueComeu = 0;
     private int maximoDeVezesPraComer = 1000000;
-    private int delay = 500;
+    private int delay = 50;
     public Mao garfoAEsquerda { get; set; }
     public Mao garfoADireita { get; set; }
     Stopwatch cronometro;
@@ -76,22 +76,19 @@ class Filosofo
 
     private bool PegarGarfos()
     {
-        garfoADireita.isBusy = true;
-        garfoAEsquerda.isBusy = true;
-
-        if (filosofoADireita.garfoAEsquerda.isBusy)
+        if (!filosofoADireita.garfoAEsquerda.isBusy)
         {
-            garfoADireita.isBusy = false;
-        }
+            garfoADireita.isBusy = true;
 
-        if (filosofoAEsquerda.garfoADireita.isBusy)
-        {
-            garfoAEsquerda.isBusy = false;
-        }
-
-        if (garfoADireita.isBusy && garfoAEsquerda.isBusy)
-        {
-            return true;
+            if (!filosofoAEsquerda.garfoADireita.isBusy)
+            {
+                garfoAEsquerda.isBusy = true;
+                return true;
+            }
+            else
+            {
+                garfoADireita.isBusy = false;
+            }
         }
 
         //Console.WriteLine("O " + this.name + " está pasando fome.");
